@@ -1,10 +1,17 @@
+import styles from "./Todo.module.css"
+
 function TodoItem ({todo,toggleTodo,deleteTodo}:any) {
     return (
-        <li style={{ textDecoration: todo.completed ? 'line-through' : 'none'}}>
-            {todo.text}
-            <button onClick={() => toggleTodo(todo.id)}> 切换</button>
-            <button onClick={() => deleteTodo(todo.id)}> 删除</button>
-
+        <li className={styles.todoItem + (todo.completed ? ' ' + styles.completed : '')}>
+            <span className={styles.todoText}>{todo.text}</span>
+            <div className={styles.todoActions}>
+                <button className={styles.toggleBtn} onClick={() => toggleTodo(todo.id)}>
+                    {todo.completed ? '恢复' : '完成'}
+                </button>
+                <button className={styles.deleteBtn} onClick={() => deleteTodo(todo.id)}>
+                    删除
+                </button>
+            </div>
         </li>
     )
 }

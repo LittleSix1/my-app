@@ -1,13 +1,15 @@
+
 "use client"
 import AddTodo from "@/components/AddTodo";
 import TodoFilter from "@/components/TodoFilter";
 import TodoList from "@/components/TodoList";
 import { Todo } from "@/types"
 import { useState } from "react";
+import styles from "./page.module.css"
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([])
-  const [filter, setFilter] = useState('')
+  const [filter, setFilter] = useState('all')
 
   const addTodo = (text: string) => {
     const newTodo = {
@@ -45,11 +47,13 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <h1>TodoList</h1>
-      <AddTodo addTodo={addTodo}></AddTodo>
-      <TodoList todos={getFilteredTodos()} deleteTodo={deleteTodo} toggleTodo={toggleTodo}></TodoList>
-      <TodoFilter setFilter={setFilter}></TodoFilter>
+    <div className={styles.page}>
+      <div className={styles.main}>
+        <h1>Todo List</h1>
+        <AddTodo addTodo={addTodo} />
+        <TodoList todos={getFilteredTodos()} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
+        <TodoFilter setFilter={setFilter} />
+      </div>
     </div>
   );
 

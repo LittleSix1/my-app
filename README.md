@@ -3,6 +3,8 @@
 
 > 基于 Next.js + React 实现的简单 Todo List，适合前端初学者练习。
 
+![alt text](image.png)
+
 ## 功能介绍
 
 - 添加待办事项
